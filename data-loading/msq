@@ -1,2 +1,10 @@
 source _env.sh
-$mysql_bin -D "$database" -e "$@"
+source _msq.sh
+
+$mysql_bin -e "CREATE DATABASE IF NOT EXISTS $db_prefix$tpch_scale"
+
+if [ -z "$1" ]; then
+	$mysql_cmd
+else
+	$mysql_cmd -e "$@"
+fi
