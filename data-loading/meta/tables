@@ -1,4 +1,4 @@
--T c	cutomer
+-T c	customer
 -T L	lineitem
 -T n	nation
 -T O	orders
