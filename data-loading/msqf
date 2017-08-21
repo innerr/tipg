@@ -1,0 +1,2 @@
+source _env.sh
+$mysql_bin -D $databse --local-infile $@
