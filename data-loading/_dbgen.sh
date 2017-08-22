@@ -78,18 +78,7 @@ dbgen_table_blocks()
 		dbgen_bin -s "$tpch_scale" -C "$blocks" -S "$n" $flag &
 	done
 
-	if [ "$is_mac" == "yes" ]; then
-		wait
-	else
-		local failed=0
-		jobs -p | while read job; do
-			wait $job || let "$failed+=1"
-		done
-		if [ "$failed" != 0 ]; then
-			echo "$failed jobs failed"
-			return 1
-		fi
-	fi
+	wait_sub_procs
 }
 export -f dbgen_table_blocks
 

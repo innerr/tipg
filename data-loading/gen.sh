@@ -1,7 +1,7 @@
+set -eu
+
 blocks="$1"
 table="$2"
-
-set -eu
 
 source _dbgen.sh
 
