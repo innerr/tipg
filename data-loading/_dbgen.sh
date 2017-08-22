@@ -1,7 +1,6 @@
 source _meta.sh
 
 export dbgen_result_dir_prefix="$this_dir"/"$db_prefix"-"$tpch_scale"-c
-export dbgen_result_dir="$dbgen_result_dir_prefix$tpch_blocks"
 
 dbgen_bin()
 {
@@ -56,7 +55,7 @@ dbgen_table_blocks()
 {
 	local blocks="$1"
 	local table="$2"
-	local dir="$dbgen_result_dir"
+	local dir="$dbgen_result_dir_prefix""$blocks"
 
 	if [ -f "$dir/$table.tbl" ]; then
 		echo "$dir/$table.tbl: exists, skip" >&2
