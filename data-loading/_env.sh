@@ -1,5 +1,5 @@
 _get_this_dir() {
-	local dir=$(echo "${cmd%/*}")
+	local dir=$(echo "${0%/*}")
 	(cd "$dir" && pwd -P)
 }
 this_dir=`_get_this_dir`
