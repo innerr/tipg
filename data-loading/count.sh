@@ -1,9 +1,8 @@
 table="$1"
 
-set -e
-set -u
+set -eu
 
-source _env.sh
+source _meta.sh
 source _msq.sh
 
 query_count()
@@ -13,7 +12,7 @@ query_count()
 }
 
 if [ -z "$table" ]; then
-	cat $meta_dir/tables | awk -F '\t' '{print $2}' | while read table; do
+	get_table_names | while read table; do
 		query_count "$table";
 	done
 else

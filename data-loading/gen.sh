@@ -1,6 +1,12 @@
-table="$1"
+blocks="$1"
+table="$2"
 
-source _env.sh
+set -eu
+
 source _dbgen.sh
 
-dbgen "$table"
+if [ -z "$blocks" ]; then
+	blocks="$tpch_blocks"
+fi
+
+dbgen "$blocks" "$table"

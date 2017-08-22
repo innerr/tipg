@@ -1,5 +1,3 @@
-source _env.sh
-source _msq.sh
-
-$mysql_bin -e "CREATE DATABASE IF NOT EXISTS $db_prefix$tpch_scale"
+source _create.sh
+ensure_database
 $mysql_cmd --local-infile $@

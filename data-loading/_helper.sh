@@ -28,3 +28,9 @@ if [ -z "$this_dir" ]; then
 fi
 
 export repo_dir=`dirname $this_dir`
+
+exit_test()
+{
+	return 1
+}
+export -f exit_test

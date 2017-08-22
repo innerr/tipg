@@ -1,18 +1,8 @@
 table="$1"
 
-set -e
-set -u
+set -eu
 
-source _env.sh
-source _msq.sh
-
-load_table_from_file()
-{
-	local table="$1"
-	local file="$2"
-	local sql="LOAD DATA LOCAL INFILE '$file' INTO TABLE $1 FIELDS TERMINATED BY '|'"
-	$mysql_cmd --local-infile=1 -e "$sql"
-}
+source _load.sh
 
 dir="$this_dir/$db_prefix$tpch_scale"
 
