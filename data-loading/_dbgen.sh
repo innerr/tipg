@@ -1,7 +1,5 @@
 source _meta.sh
 
-export dbgen_result_dir_prefix="$this_dir"/"$db_prefix"-"$tpch_scale"-c
-
 dbgen_bin()
 {
 	$dbgen_dir/dbgen -b $dbgen_dir/dists.dss $@  2>/dev/null

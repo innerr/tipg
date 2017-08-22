@@ -15,7 +15,7 @@ source _load.sh
 source _create.sh
 source _dbgen.sh
 
-file="$dbgen_dir/$table.tbl"
+file="$dbgen_result_dir_prefix"1"/$table.tbl"
 if [ ! -f "$file" ]; then
 	echo "$file: not found" >&2
 	exit 1
