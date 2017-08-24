@@ -1,0 +1,15 @@
+keep="$1"
+
+set -eu
+
+path="./tidb-data"
+store="boltdb"
+tidb="/data/coding/tidb/src/github.com/pingcap/tidb/bin/tidb-server"
+
+if [ "$keep" != "keep" ]; then
+	rm -rf $path
+fi
+
+mkdir -p $path
+
+$tidb -store=$store -path=$path/db 2>&1 | tee $path/server.log
