@@ -9,5 +9,5 @@ echo "$blocks $table"
 
 for ((i=0; i<2; i++)); do
 	$this_dir/cpu.sh $cpu_sample "$blocks $table" 2>&1 >> $cpu_log &
-	{ time echo ./bench.sh "$blocks" "$table"; }  2>&1 | grep real
+	{ time $this_dir/bench.sh "$blocks" "$table"; }  2>&1 | grep real
 done
