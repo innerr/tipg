@@ -66,3 +66,4 @@ main()
 	burn_all
 }
 
+main

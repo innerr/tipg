@@ -1,4 +1,4 @@
-sec="10"
+sec="60"
 if [ ! -z "$1" ]; then
 	sec="$1"
 fi
