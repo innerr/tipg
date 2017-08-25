@@ -7,5 +7,7 @@ cpu_log="$4"
 
 echo "$blocks $table"
 
-$this_dir/cpu.sh $cpu_sample "$blocks $table" 2>&1 >> $cpu_log &
-{ time echo ./bench.sh "$blocks" "$table"; }  2>&1 | grep real
+for ((i=0; i<2; i++)); do
+	$this_dir/cpu.sh $cpu_sample "$blocks $table" 2>&1 >> $cpu_log &
+	{ time echo ./bench.sh "$blocks" "$table"; }  2>&1 | grep real
+done
