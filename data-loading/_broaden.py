@@ -6,4 +6,7 @@ while True:
     line = sys.stdin.readline()
     if not line:
         break
-    print line[:-1] * n
+    if n <= 32:
+        print line[:-1] * n
+    else:
+        print line[:-1] + 'X' * n + '|'
