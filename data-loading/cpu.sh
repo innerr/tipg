@@ -8,6 +8,8 @@ if [ ! -z "$2" ]; then
 fi
 
 sleep 2
-spid=`ps -ef | grep tidb-server | grep -v grep | awk '{print $2}'`
-top -pid $spid -l $sec | grep tidb-server | awk '{print $3}' | grep -v '0.0' | awk '{sum+=$1}END{print sum/NR}'
 
+spid=`ps -ef | grep tidb-server | grep -v grep | awk '{print $2}'`
+if [ ! -z "$spid" ]; then
+	top -pid $spid -l $sec | grep tidb-server | awk '{print $3}' | grep -v '0.0' | awk '{sum+=$1}END{print sum/NR}'
+fi
