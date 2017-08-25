@@ -16,7 +16,7 @@ burn()
 	bash $this_dir/_bench.sh "$blocks" "$table" 100 "$result/cpu.log" 2>&1 >> "$result/elapse.log"
 }
 
-main()
+burn_all()
 {
 	burn  1 lineitemw
 	burn  4 lineitemw
@@ -38,4 +38,31 @@ main()
 	burn 10 lineitem2
 }
 
-main
+gen_all()
+{
+	$this_dir/gen.sh  1 lineitem
+	$this_dir/gen.sh  2 lineitem
+	$this_dir/gen.sh  3 lineitem
+	$this_dir/gen.sh  4 lineitem
+	$this_dir/gen.sh  6 lineitem
+	$this_dir/gen.sh 10 lineitem
+
+	$this_dir/broaden.sh lineitem  1 2
+	$this_dir/broaden.sh lineitem  4 2
+	$this_dir/broaden.sh lineitem 10 2
+
+	$this_dir/broaden.sh lineitem  1 169 w
+	$this_dir/broaden.sh lineitem  4 169 w
+	$this_dir/broaden.sh lineitem 10 169 w
+
+	$this_dir/broaden.sh lineitem  1 4
+	$this_dir/broaden.sh lineitem  4 4
+	$this_dir/broaden.sh lineitem 10 4
+}
+
+main()
+{
+	#gen_all
+	burn_all
+}
+

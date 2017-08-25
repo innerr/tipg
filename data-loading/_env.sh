@@ -11,3 +11,5 @@ export tpch_blocks="5"
 export database="$db_prefix$tpch_scale"
 export dbgen_result_dir_prefix="$this_dir"/"$db_prefix"-"$tpch_scale"-c
 
+export tidb="/data/coding/tidb/src/github.com/pingcap/tidb/bin/tidb-server"
+export tidb="/home/rorschach/coding/pingcap/tidb/src/github.com/pingcap/tidb/bin/tidb-server"
