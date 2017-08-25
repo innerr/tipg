@@ -11,6 +11,7 @@ if [ -z "$times" ]; then
 	echo "usage: <bin> table-name broaden-times [output-suffix]" >&2
 	exit 1
 fi
+
 if [ -z "$suffix" ]; then
 	suffix="$times"
 fi

@@ -5,6 +5,7 @@ set -eu
 path="./tidb-data"
 store="boltdb"
 tidb="/data/coding/tidb/src/github.com/pingcap/tidb/bin/tidb-server"
+tidb="/home/rorschach/coding/pingcap/tidb/src/github.com/pingcap/tidb/bin/tidb-server"
 
 if [ "$keep" != "keep" ]; then
 	rm -rf $path
