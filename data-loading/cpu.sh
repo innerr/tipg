@@ -11,16 +11,19 @@ set -eu
 
 source _env.sh
 
-sleep 1
-
-pname="tidb-server"
+pname="$tidb_name"
 
 spid=`ps -ef | grep $pname | grep -v grep | awk '{print $2}'`
 
-if [ ! -z "$spid" ]; then
-	if [ "$is_mac" == "yes" ]; then
-		top -pid $spid -l $sec | grep $pname | awk '{print $3}' | grep -v '0.0' | awk '{sum+=$1}END{print sum/NR}'
-	else
-		top -b -n $sec -p $spid -d 1 | grep $pname | awk '{print $9}' | grep -v '0.0' | awk '{sum+=$1}END{print sum/NR}'
-	fi
+if [ -z "$spid" ]; then
+	echo "$pname process not found" >&2
+	exit 1
 fi
+
+data=""
+if [ "$is_mac" == "yes" ]; then
+	data=`top -pid $spid -l $sec | grep $pname | awk '{print $3}'`
+else
+	data=`top -b -n $sec -p $spid -d 1 | grep $pname | awk '{print $9}'`
+fi
+echo "$data" | grep -v '0.0' | awk '{sum+=$1}END{print sum/NR}'
